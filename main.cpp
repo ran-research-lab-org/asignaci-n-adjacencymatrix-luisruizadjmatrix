@@ -12,6 +12,7 @@ int main() {
   
   cout << G.numEdges() << endl;
   cout << G.inDegree(2) << endl;
+  cout << G.isInfluencer(0) << endl;
 
   G.print();
 }

@@ -67,7 +67,25 @@ public:
     // En caso de que haya varios nodos que tengan el mayor inDegree,
     // devuelve true si u es uno de ellos
     bool isInfluencer(int u) const  {
-        return false;
+        // array for inDegrees
+        std::vector<int> degrees;
+
+        // get all inDegrees
+        for(int i = 0; i < numVertices; i++)
+        {
+            degrees.push_back(inDegree(i));
+        }
+
+        // find highest
+        int idx = 0;
+        bool unique = true;
+        for(int i = 1; i < numVertices; i++)
+        {
+            if(degrees[idx] < degrees[i]) {idx = i; unique = true;}
+            else if(degrees[idx] == degrees[i]) unique = false;
+        }
+
+        return ((idx == u) and unique);
     }
 };
 
